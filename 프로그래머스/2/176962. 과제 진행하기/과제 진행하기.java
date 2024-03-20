@@ -38,7 +38,7 @@ class Solution {
                     D waitPlan = waitPq.poll();
                     
                     if(curTime + waitPlan.period > next.time) {
-                        waitPq.add(new D(waitPlan.title, waitPlan.time - curTime + next.time, curTime + waitPlan.period - next.time, waitPlan.order));
+                        waitPq.add(new D(waitPlan.title, next.time, curTime + waitPlan.period - next.time, waitPlan.order));
                         curTime = next.time;
                         break;
                     } else if(curTime + waitPlan.period == next.time) {
