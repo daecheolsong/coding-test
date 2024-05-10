@@ -6,6 +6,7 @@ class Solution {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(br.readLine());
         StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
         for(int tc = 1; tc <= t; tc ++) {
             sb.append("#").append(tc).append(" ");
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -25,7 +26,7 @@ class Solution {
                 }
                 for(int j = i + 1; j < n; j ++) {
                     String target = strings[j];
-                    if (src.equals(reverse(target))) {
+                    if (src.equals(reverse(sb2, target))) {
                         concatPL += 2 * m;
                     }
                 }
@@ -36,8 +37,9 @@ class Solution {
         System.out.println(sb);
     }
 
-    public static String reverse(String string) {
-        return new StringBuilder().append(string).reverse().toString();
+    public static String reverse(StringBuilder sb, String string) {
+        sb.setLength(0);
+        return sb.append(string).reverse().toString();
     }
 
     public static boolean isP(String string) {
