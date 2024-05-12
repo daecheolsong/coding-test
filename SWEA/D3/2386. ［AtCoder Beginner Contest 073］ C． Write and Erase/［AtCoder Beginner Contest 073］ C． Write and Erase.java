@@ -10,9 +10,9 @@ public class Solution {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int t = Integer.parseInt(br.readLine());
 		StringBuilder sb = new StringBuilder();
+		Set<Integer> set = new HashSet<Integer>();
 		for (int tc = 1; tc <= t; tc++) {
 			sb.append("#").append(tc).append(" ");
-			Set<Integer> set = new HashSet<Integer>();
 			int n = Integer.parseInt(br.readLine());
 
 			for (int i = 0; i < n; i++) {
@@ -27,6 +27,7 @@ public class Solution {
 
 			sb.append(set.size());
 			sb.append("\n");
+			set.clear();
 		}
 		System.out.println(sb);
 	}
