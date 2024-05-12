@@ -1,18 +1,42 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Base64;
 
 public class Solution {
 
 	public static void main(String[] args) throws Exception {
-
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int t = Integer.parseInt(br.readLine());
+		int n = Integer.parseInt(br.readLine());
 		StringBuilder sb = new StringBuilder();
-		for (int tc = 1; tc <= t; tc++) {
-			sb.append("#").append(tc).append(" ").append(new String(Base64.getDecoder().decode(br.readLine())))
-					.append("\n");
+		char[] m = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+
+		for (int i = 0; i < n; i++) {
+			sb.append("#").append(i + 1).append(" ");
+			String encodedString = br.readLine();
+			int buf = 0;
+			int cutIdx = 0;
+			for (int j = 0; j < encodedString.length(); j++) {
+				char encodedChar = encodedString.charAt(j);
+				int mIdx = 0;
+				for (int k = 0; k < 64; k++) {
+					if (m[k] == encodedChar) {
+						mIdx = k;
+						break;
+					}
+				}
+
+				buf = (buf << 6) | mIdx;
+				cutIdx += 6;
+
+				if (cutIdx >= 8) {
+					cutIdx -= 8;
+					char decodeChar = (char) ((buf >> cutIdx) & 0xff);
+					sb.append(decodeChar);
+
+				}
+			}
+			sb.append("\n");
 		}
+
 		System.out.println(sb);
 	}
 
