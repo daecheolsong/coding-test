@@ -31,14 +31,8 @@ public class Solution {
 			}
 		}
 
-		if (result.xLine == 2 && result.oLine == 0) {
-			if (result.xCount == 5 && result.oCount == 4) {
-				return 1;
-			}
-		}
-
 		if (result.oLine == 2 && result.xLine == 0) {
-			if (result.oCount == 5 && result.xCount == 4) {
+			if (result.oCount-  result.xCount == 1) {
 				return 1;
 			}
 		}
