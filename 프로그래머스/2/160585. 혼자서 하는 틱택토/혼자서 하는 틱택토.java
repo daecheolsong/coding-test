@@ -20,13 +20,13 @@ public class Solution {
 		}
 
 		if (result.xLine == 1 && result.oLine == 0) {
-			if ((result.xCount == 3 && result.oCount == 3) || (result.xCount == 4 && result.oCount == 4)) {
+			if (result.xCount == result.oCount) {
 				return 1;
 			}
 		}
 
 		if (result.oLine == 1 && result.xLine == 0) {
-			if ((result.oCount == 3 && result.xCount == 2) || (result.oCount == 4 && result.xCount == 3)) {
+			if (result.oCount - result.xCount == 1) {
 				return 1;
 			}
 		}
