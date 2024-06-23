@@ -1,33 +1,40 @@
 import java.util.*;
-import java.lang.Math;
+
 class Solution {
-    public boolean dividing(int[] arr, int num){
-        for(int n : arr){
-            if(n%num == 0) continue;
-            else return false;
-        }
-
-        return true;
-    }
-
-    public boolean notDividing(int[] arr, int num){
-        for(int n : arr){
-            if(n%num != 0) continue;
-            else return false;
-        }
-
-        return true;
-    }
-
     public int solution(int[] arrayA, int[] arrayB) {
         int answer = 0;
-        int num = Math.max(arrayA[0], arrayB[0]);
-        for(int i=2; i<=num; i++){
-            if((dividing(arrayA, i) && notDividing(arrayB,i)) || 
-              (dividing(arrayB, i) && notDividing(arrayA,i))){
+        
+        Arrays.sort(arrayA);
+        Arrays.sort(arrayB);
+        
+        int minNum = Math.max(arrayA[0], arrayB[0]);
+        
+        for(int i = 2; i <= minNum; i ++) {
+            if((divide(arrayA, i, true) && divide(arrayB, i, false)) || (divide(arrayB, i, true) && divide(arrayA, i, false))) {
                 answer = i;
             }
         }
+        
         return answer;
+    }
+    
+    
+    public boolean divide(int [] arr, int num, boolean can) {
+        if(can) {
+            
+            for(int i = 0; i < arr.length; i ++) {
+                if(arr[i] % num != 0) {
+                    return false;
+                }   
+            }
+            return true;
+        }
+        
+        for(int i = 0; i < arr.length; i ++) {
+            if(arr[i] % num == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
