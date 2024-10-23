@@ -10,9 +10,6 @@ class Solution {
             }
             budget -= d[idx++];
         }
-        if(idx == d.length) {
-            return idx;
-        }
         return budget < 0 ? idx - 1 : idx;
     }
 }
