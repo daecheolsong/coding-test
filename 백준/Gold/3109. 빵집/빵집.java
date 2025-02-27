@@ -20,9 +20,9 @@ public class Main {
 		map = new int[n][m];
 
 		for (int i = 0; i < n; i++) {
-			String[] line = br.readLine().split("");
+			String line = br.readLine();
 			for (int j = 0; j < m; j++) {
-				char c = line[j].charAt(0);
+				char c = line.charAt(j);
 				map[i][j] = c == '.' ? 0 : 1;
 			}
 		}
