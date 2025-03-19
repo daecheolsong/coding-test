@@ -20,7 +20,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int t = Integer.parseInt(br.readLine());
-
+		StringBuilder sb = new StringBuilder();
 		for (int tc = 0; tc < t; tc++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			v = Integer.parseInt(st.nextToken());
@@ -66,8 +66,9 @@ public class Main {
 					}
 				}
 			}
-			System.out.println(dp[w]);
+			sb.append(dp[w]).append("\n");
 		}
+		System.out.println(sb);
 	}
 
 	static class Node {
