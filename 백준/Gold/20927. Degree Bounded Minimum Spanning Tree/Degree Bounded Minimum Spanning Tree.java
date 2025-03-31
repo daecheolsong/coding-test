@@ -46,15 +46,16 @@ public class Main {
 		Collections.sort(edgeList, (e1, e2) -> e1.cost - e2.cost);
 
 		search(0, 0, 0);
-
+		StringBuilder sb = new StringBuilder();
 		if (minCost == Integer.MAX_VALUE) {
-			System.out.println("NO");
+			sb.append("NO\n");
 		} else {
-			System.out.println("YES");
+			sb.append("YES\n");
 			for (Edge e : answer) {
-				System.out.println(e.from + " " + e.to);
+				sb.append(e.from).append(" ").append(e.to).append("\n");
 			}
 		}
+		System.out.println(sb);
 	}
 
 	public static void search(int cur, int cnt, int cost) {
